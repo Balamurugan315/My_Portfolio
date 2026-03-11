@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, MapPin, Trophy } from "lucide-react";
@@ -39,7 +37,7 @@ async function getGitHubProfile(): Promise<GitHubProfile | null> {
   try {
     const response = await fetch(
       `https://api.github.com/users/${siteConfig.links.githubUsername}`,
-      { cache: "no-store" }
+      { cache: "force-cache" }
     );
 
     if (!response.ok) {
@@ -76,7 +74,7 @@ async function getLeetCodeStats(): Promise<LeetCodeStats | null> {
       headers: {
         "Content-Type": "application/json",
       },
-      cache: "no-store",
+      cache: "force-cache",
       body: JSON.stringify({
         query: `
           query userPublicProfile($username: String!) {
@@ -515,9 +513,9 @@ const StatsPage = async () => {
       </section>
 
       <Pager
-        prevHref="/education"
+        prevHref="/certifications"
         nextHref="/"
-        prevTitle="Education"
+        prevTitle="Certifications"
         nextTitle="Home"
       />
     </>

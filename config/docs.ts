@@ -40,6 +40,11 @@ export const docsConfig = {
           items: [],
         },
         {
+          title: 'Certifications',
+          href: '/certifications',
+          items: [],
+        },
+        {
           title: 'Stats',
           href: '/stats',
           items: [],

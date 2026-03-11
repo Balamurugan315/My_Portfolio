@@ -10,6 +10,12 @@ import { siteConfig } from '@/config/site';
 import { ArrowLeftIcon, ExternalLinkIcon } from 'lucide-react';
 import Link from 'next/link';
 
+export function generateStaticParams() {
+  return projects.map((project) => ({
+    id: project.slug,
+  }));
+}
+
 const getProject = async (slug: string) => {
   return projects.find((project) => project.slug === slug);
 };
