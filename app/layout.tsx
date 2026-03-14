@@ -71,6 +71,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <html lang="en" suppressHydrationWarning>
         <head>
+          <meta name="google-site-verification" content="UE4SlHNetY7cXTGDk_WVmczgO2M9ID6TPWG8vewylD4" />
 
           {/* Canonical URL */}
           <link rel="canonical" href={siteConfig.url} />
