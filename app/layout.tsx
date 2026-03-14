@@ -23,14 +23,18 @@ export const metadata: Metadata = {
   title: siteConfig.name,
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
+
   keywords: siteConfig.keywords,
+
   authors: [
     {
       name: 'Balamurugan',
       url: siteConfig.links.linkedin,
     },
   ],
+
   creator: 'Balamurugan',
+
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -39,12 +43,14 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     siteName: siteConfig.name,
   },
+
   twitter: {
     card: 'summary_large_image',
     title: siteConfig.name,
     description: siteConfig.description,
     creator: '@Balamurugan315',
   },
+
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
@@ -65,18 +71,49 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <html lang="en" suppressHydrationWarning>
         <head>
+
+          {/* Canonical URL */}
+          <link rel="canonical" href={siteConfig.url} />
+
+          {/* Theme Color Script */}
           <script
             dangerouslySetInnerHTML={{
               __html: `
               try {
-                if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
+                if (
+                  localStorage.theme === 'dark' ||
+                  ((!('theme' in localStorage) || localStorage.theme === 'system') &&
+                    window.matchMedia('(prefers-color-scheme: dark)').matches)
+                ) {
+                  document
+                    .querySelector('meta[name="theme-color"]')
+                    .setAttribute('content', '${META_THEME_COLORS.dark}')
                 }
               } catch (_) {}
             `,
             }}
           />
+
+          {/* Structured Data for Google */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Person',
+                name: 'Balamurugan',
+                url: siteConfig.url,
+                jobTitle: 'Full Stack Software Engineer',
+                sameAs: [
+                  siteConfig.links.githubProfile,
+                  siteConfig.links.linkedin,
+                ],
+              }),
+            }}
+          />
+
         </head>
+
         <body
           className={cn(
             'min-h-svh bg-background font-sans antialiased',
@@ -99,32 +136,42 @@ export default function RootLayout({ children }: RootLayoutProps) {
                     className="border-grid flex flex-1 flex-col"
                   >
                     <SiteHeader />
+
                     <main className="flex flex-1 flex-col">
                       <div className="container-wrapper">
                         <div className="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
+                          
                           <aside className="border-grid fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 border-r md:sticky md:block">
                             <div className="no-scrollbar h-full overflow-auto py-6 pr-4 lg:py-8">
                               <SideNav config={docsConfig} />
                             </div>
                           </aside>
+
                           <div className="flex flex-1 flex-col py-6 pr-4 lg:py-8">
                             {children}
                           </div>
+
                         </div>
                       </div>
                     </main>
+
                     <SiteFooter />
                   </div>
                 </div>
               </div>
             </LenisProvider>
           </ThemeProvider>
+
           <Toaster richColors position="top-center" />
+
           <GoogleAnalytics
             gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ''}
           />
+
           <Analytics />
+
           <SpeedInsights />
+
         </body>
       </html>
     </>

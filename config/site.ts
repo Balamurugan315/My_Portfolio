@@ -1,11 +1,15 @@
 export const siteConfig = {
-  name: 'Balamurugan',
-  url: 'https://portfolio.local',
+  name: 'Balamurugan | Full Stack Software Engineer',
+
+  url: 'https://balamuruganm.vercel.app',
+
   description:
-    'Portfolio of Balamurugan, a full-stack software engineer building scalable web applications with React, Node.js, Java, Python, and SQL.',
+    'Portfolio of Balamurugan, a full-stack software engineer building scalable web applications using React, Node.js, Java, Python, and SQL. Explore projects, skills, certifications, and development work.',
+
   keywords: [
     'Balamurugan',
     'Balamurugan portfolio',
+    'Balamurugan developer',
     'Full Stack Developer',
     'Software Engineer',
     'React Developer',
@@ -16,6 +20,7 @@ export const siteConfig = {
     'Computer Science Engineer',
     'Balamurugan resume',
   ],
+
   links: {
     shadcn: 'https://ui.shadcn.com/',
     telegram: '',
@@ -26,11 +31,15 @@ export const siteConfig = {
     leetcode: 'https://leetcode.com/u/BALAMURUGAN3125/',
     skillrack:
       'https://www.skillrack.com/faces/resume.xhtml?id=402293&key=bfb1a6bdcb0e07dff5dbf1c05c75b5894c2a19a8',
+
     resume: '/resume/Balamurugan_Resume.pdf',
+
     email: 'mailto:balamuruganmsde@gmail.com',
     emailAddress: 'balamuruganmsde@gmail.com',
+
     emailCompose:
       'https://mail.google.com/mail/?view=cm&fs=1&to=balamuruganmsde@gmail.com',
+
     githubUsername: 'Balamurugan315',
   },
 };

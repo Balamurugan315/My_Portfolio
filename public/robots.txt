@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://balamuruganm.vercel.app/sitemap.xml
